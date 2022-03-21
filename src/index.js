@@ -1,8 +1,6 @@
 #! /usr/bin/env node
-
 const inquirer = require('inquirer')
-const {CreateResolver} = require('./builders')
-const {IMainQuestions} = require('./types')
+const {CreateResolver} = require('./builders/resolver')
 
 inquirer
 	.prompt([

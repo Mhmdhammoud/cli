@@ -1,8 +1,7 @@
-import {writeFile} from 'fs'
-import path from 'path'
-import {ResolverFile} from '../constants/index.js'
-import {IMainQuestions} from '../types'
-import inquirer from 'inquirer'
+const {writeFile} = require('fs')
+const path = require('path')
+const {ResolverFile} = require('../constants/resolverFile.js')
+const inquirer = require('inquirer')
 
 const resolver = (answers) => {
 	const isNameAllowed = answers.fileName.includes(' ')
@@ -48,4 +47,4 @@ const resolver = (answers) => {
 			console.log(err)
 		})
 }
-export default resolver
+module.exports = resolver
