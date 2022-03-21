@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 const inquirer = require('inquirer')
-const {CreateResolver} = require('./builders/resolver')
+const CreateResolver = require('./builders/resolver')
 
 inquirer
 	.prompt([

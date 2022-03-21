@@ -1,6 +1,6 @@
 const {writeFile} = require('fs')
 const path = require('path')
-const {ResolverFile} = require('../constants/resolverFile.js')
+const ResolverFile = require('../constants/resolverFile.js')
 const inquirer = require('inquirer')
 
 const resolver = (answers) => {
