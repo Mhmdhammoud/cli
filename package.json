@@ -1,11 +1,12 @@
 {
   "name": "testing-cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "./dist/index.js",
   "bin": {
     "@mhmdhammoud/testing-cli": "./bin/generate.js"
   },
+  "private": false,
   "scripts": {
     "test": "npm run test",
     "build": "tsc",
@@ -14,7 +15,7 @@
     "start": "node ./dist/index.js"
   },
   "keywords": [],
-  "author": "Mhmdhammoud",
+  "author": "mhmdhammoud",
   "license": "MIT",
   "dependencies": {
     "inquirer": "^8.2.1"
