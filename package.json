@@ -1,8 +1,11 @@
 {
-  "name": "first-cli",
+  "name": "testing-cli",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
+  "bin": {
+    "@mhmdhammoud/testing-cli": "./bin/generate.js"
+  },
   "scripts": {
     "test": "npm run test",
     "build": "tsc",
