@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 const inquirer = require('inquirer')
 const CreateResolver = require('./builders/resolver')
-const { program } = require('commander');
+const {program} = require('commander')
 
 // if (!process.argv[2])
 // inquirer
@@ -48,22 +48,29 @@ const { program } = require('commander');
 // 		}
 // 	})
 
-const type=process.argv[2]
+const type = process.argv[2]
 
 program
 	.name('Meritt.dev cli')
 	.description('CLI to some automating module creation')
-	.version('0.8.0');
+	.version('0.8.0')
 
 program.command('create')
 	.description('Creates files and directories with basic boiler plate templates')
 	.argument('<string>', 'resource type')
-	// .option('-d, --directory', 'Destination of the created resource')
+	.option('-n, --name <string>', 'File name', '')
 	// .option('-s, --separator <char>', 'separator character', ',')
-	.action((type, options) => {
-		if (type.trim().toLowerCase() === 'resolver') {
-				CreateResolver()
-		}
-	});
+	.action((rawType, options) => {
+		const type = rawType.trim().toLowerCase()
+		switch (type) {
+			case 'resolver':
+				CreateResolver(options)
+				break
 
-program.parse();
+			default :
+				return
+		}
+	})
+
+
+program.parse()
