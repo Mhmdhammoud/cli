@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 const inquirer = require('inquirer')
 const CreateResolver = require('./builders/resolver')
+const CreateSchema = require('./builders/schema')
 const {program} = require('commander')
 
 // if (!process.argv[2])
@@ -66,7 +67,9 @@ program.command('create')
 			case 'resolver':
 				CreateResolver(options)
 				break
-
+			case 'schema':
+				CreateSchema(options)
+				break
 			default :
 				return
 		}
