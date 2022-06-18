@@ -1,4 +1,4 @@
-const createSchema = (serviceName) => `
+export default (serviceName: string) => `
 import {Field, ObjectType} from 'type-graphql'
 import {
 	getModelForClass,
@@ -40,7 +40,7 @@ export class ${serviceName} {
 		unique: true,
 	})
 	userId: string
-	
+
 	@Field(() => Date)
 	createdAt: Date
 
@@ -52,4 +52,3 @@ export const ${serviceName}Model = getModelForClass<typeof ${serviceName}, Query
 	schemaOptions: {versionKey: false, timestamps: true, minimize: false},
 })
 `
-module.exports = createSchema
