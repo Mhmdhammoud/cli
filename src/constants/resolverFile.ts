@@ -1,5 +1,12 @@
-const createResolver = (titleName, serviceName, serviceFile,type) => `
-import {Resolver,${type === 'Mutation' ? 'Mutation' : 'Query'}} from 'type-graphql'
+export default (
+	titleName: string,
+	serviceName: string,
+	serviceFile: string,
+	type: string
+) => `
+import {Resolver,${
+	type === 'Mutation' ? 'Mutation' : 'Query'
+}} from 'type-graphql'
 import ${serviceName} from './${serviceFile}'
 @Resolver(()=>Boolean)
 class ${titleName} {
@@ -12,4 +19,3 @@ class ${titleName} {
 	}
 }
 export default ${titleName}`
-module.exports = createResolver
