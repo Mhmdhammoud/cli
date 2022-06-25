@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.toUpperFirst = void 0;
 /**
  *
  * @param str
@@ -14,4 +15,24 @@ exports.default = (str) => {
         .replace(STRING_DECAMELIZE_REGEXP, '$1-$2')
         .toLowerCase()
         .replace(STRING_DASHERIZE_REGEXP, '-');
+};
+const toUpperFirst = (_) => {
+    if (_) {
+        return _.toLowerCase()
+            .split(' ')
+            .map((val) => val.charAt(0).toUpperCase() + val.slice(1))
+            .join(' ')
+            .split('_')
+            .join(' ');
+    }
+    return null;
+};
+exports.toUpperFirst = toUpperFirst;
+String.prototype.toUpperFirst = function () {
+    return this.toLowerCase()
+        .split(' ')
+        .map((val) => val.charAt(0).toUpperCase() + val.slice(1))
+        .join(' ')
+        .split('_')
+        .join(' ');
 };

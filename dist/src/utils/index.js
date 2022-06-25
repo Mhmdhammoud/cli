@@ -17,11 +17,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toUpperFirst = exports.isError = exports.normalizeToKebabOrSnakeCase = void 0;
+exports.isError = exports.toUpperFirst = exports.normalizeToKebabOrSnakeCase = void 0;
 var formatting_1 = require("./formatting");
 Object.defineProperty(exports, "normalizeToKebabOrSnakeCase", { enumerable: true, get: function () { return __importDefault(formatting_1).default; } });
+Object.defineProperty(exports, "toUpperFirst", { enumerable: true, get: function () { return formatting_1.toUpperFirst; } });
 var is_error_1 = require("./is-error");
 Object.defineProperty(exports, "isError", { enumerable: true, get: function () { return __importDefault(is_error_1).default; } });
 __exportStar(require("./prefixes"), exports);
-var ToUpperFirst_1 = require("./ToUpperFirst");
-Object.defineProperty(exports, "toUpperFirst", { enumerable: true, get: function () { return __importDefault(ToUpperFirst_1).default; } });
