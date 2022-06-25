@@ -9,7 +9,7 @@ const schematics_1 = require("../schematics");
 class ProgramConfig {
     static buildDescription() {
         return ('Generate a Nest element.\n' +
-            `  Schematics available on ${chalk_1.default.bold('@nestjs/schematics')} collection:\n` +
+            `  Schematics available on ${chalk_1.default.bold('@meritt.dev/cli')} collection:\n` +
             this.buildSchematicsListAsTable());
     }
     static buildSchematicsListAsTable() {

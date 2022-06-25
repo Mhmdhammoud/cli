@@ -7,7 +7,7 @@ class ProgramConfig {
 		return (
 			'Generate a Nest element.\n' +
 			`  Schematics available on ${chalk.bold(
-				'@nestjs/schematics'
+				'@meritt.dev/cli'
 			)} collection:\n` +
 			this.buildSchematicsListAsTable()
 		)
