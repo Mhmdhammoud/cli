@@ -80,37 +80,35 @@ const resolver = (options: Input[]) => {
 					: `${
 						nameOption.value.toString().charAt(0).toUpperCase() + nameOption.value.toString().slice(1)
 					}`
-			const serviceFileName = `${
+			const serviceClass = `${
 				innerAnswers.serviceName.charAt(0).toUpperCase() +
 				innerAnswers.serviceName.slice(1)
+			}`.replace('-','')
+			const splitServiceName=innerAnswers.serviceName.split('-')
+			const serviceName =`${
+				splitServiceName[0] +
+				splitServiceName[1].charAt(0).toUpperCase()+splitServiceName[1].slice(1)
 			}`
-			const serviceName = normalizeToKebabOrSnakeCase(`${
-				innerAnswers.serviceName.charAt(0).toUpperCase() +
-				innerAnswers.serviceName.slice(1)
-			}`)
 			const pathToFile =
 				process.cwd() !== innerAnswers.directory
 					? path.join(process.cwd(), innerAnswers.directory)
 					: process.cwd()
-			console.log({serviceFileName})
-			console.log({serviceName})
-			console.log({fileName})
-			console.log({titleName})
-			// writeFile(
-			// 	path.join(pathToFile, fileName),
-			// 	resolverFile(
-			// 		titleName,
-			// 		serviceName,
-			// 		innerAnswers.serviceName,
-			// 		innerAnswers.type,
-			// 	),
-			// 	(err) => {
-			// 		if(err){
-			// 			console.error('Error writing file', err)
-			// 			process.exit(1)
-			// 		}
-			// 	},
-			// )
+			writeFile(
+				path.join(pathToFile, fileName),
+				resolverFile(
+					titleName,
+					serviceName,
+					serviceClass,
+					innerAnswers.type,
+					innerAnswers.serviceName
+				),
+				(err) => {
+					if(err){
+						console.error('Error writing file', err)
+						process.exit(1)
+					}
+				},
+			)
 		})
 		.catch((err) => {
 			console.log(err)

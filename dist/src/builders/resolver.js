@@ -3,7 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const fs_1 = require("fs");
 const path_1 = __importDefault(require("path"));
+const constants_1 = require("../constants/");
 const inquirer_1 = __importDefault(require("inquirer"));
 const utils_1 = require("../utils");
 const resolver = (options) => {
@@ -70,32 +72,20 @@ const resolver = (options) => {
             ? `${innerAnswers.fileName.charAt(0).toUpperCase() +
                 innerAnswers.fileName.slice(1)}`
             : `${nameOption.value.toString().charAt(0).toUpperCase() + nameOption.value.toString().slice(1)}`;
-        const serviceFileName = `${innerAnswers.serviceName.charAt(0).toUpperCase() +
-            innerAnswers.serviceName.slice(1)}`;
-        const serviceName = (0, utils_1.normalizeToKebabOrSnakeCase)(`${innerAnswers.serviceName.charAt(0).toUpperCase() +
-            innerAnswers.serviceName.slice(1)}`);
+        const serviceClass = `${innerAnswers.serviceName.charAt(0).toUpperCase() +
+            innerAnswers.serviceName.slice(1)}`.replace('-', '');
+        const splitServiceName = innerAnswers.serviceName.split('-');
+        const serviceName = `${splitServiceName[0] +
+            splitServiceName[1].charAt(0).toUpperCase() + splitServiceName[1].slice(1)}`;
         const pathToFile = process.cwd() !== innerAnswers.directory
             ? path_1.default.join(process.cwd(), innerAnswers.directory)
             : process.cwd();
-        console.log({ serviceFileName });
-        console.log({ serviceName });
-        console.log({ fileName });
-        console.log({ titleName });
-        // writeFile(
-        // 	path.join(pathToFile, fileName),
-        // 	resolverFile(
-        // 		titleName,
-        // 		serviceName,
-        // 		innerAnswers.serviceName,
-        // 		innerAnswers.type,
-        // 	),
-        // 	(err) => {
-        // 		if(err){
-        // 			console.error('Error writing file', err)
-        // 			process.exit(1)
-        // 		}
-        // 	},
-        // )
+        (0, fs_1.writeFile)(path_1.default.join(pathToFile, fileName), (0, constants_1.resolverFile)(titleName, serviceName, serviceClass, innerAnswers.type, innerAnswers.serviceName), (err) => {
+            if (err) {
+                console.error('Error writing file', err);
+                process.exit(1);
+            }
+        });
     })
         .catch((err) => {
         console.log(err);
