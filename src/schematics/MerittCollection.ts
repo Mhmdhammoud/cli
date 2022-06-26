@@ -1,29 +1,30 @@
 import {Schematic, SchematicType} from '../types'
+import {toUpperFirst} from '../utils'
 
 class MerittCollection {
 	private static schematics: Schematic[] = [
 		{
-			name: SchematicType.APPLICATION,
+			name: toUpperFirst(SchematicType.APPLICATION),
 			alias: 'application',
 			description: 'Generate a new application workspace',
 		},
 		{
-			name: SchematicType.CLASS,
+			name: toUpperFirst(SchematicType.CLASS),
 			alias: 'cl',
 			description: 'Generate a new class',
 		},
 		{
-			name: SchematicType.RESOLVER,
+			name: toUpperFirst(SchematicType.RESOLVER),
 			alias: 'r',
 			description: 'Generate a GraphQL resolver declaration',
 		},
 		{
-			name: SchematicType.SERVICE,
+			name: toUpperFirst(SchematicType.SERVICE),
 			alias: 's',
 			description: 'Generate a service declaration',
 		},
 		{
-			name: SchematicType.RESOURCE,
+			name: toUpperFirst(SchematicType.RESOURCE),
 			alias: 'res',
 			description: 'Generate a new CRUD resource',
 		},

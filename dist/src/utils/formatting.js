@@ -25,7 +25,7 @@ const toUpperFirst = (_) => {
             .split('_')
             .join(' ');
     }
-    return null;
+    return '';
 };
 exports.toUpperFirst = toUpperFirst;
 String.prototype.toUpperFirst = function () {

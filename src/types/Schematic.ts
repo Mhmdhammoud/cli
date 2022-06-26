@@ -1,7 +1,7 @@
 import {SchematicType} from './enums'
 
 export interface Schematic {
-	name: SchematicType;
+	name: string;
 	alias: string;
 	description: string;
 }

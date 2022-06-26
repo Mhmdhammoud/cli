@@ -1,9 +1,6 @@
 #!/usr/bin/env node
-import {schemaBuilder, resolverBuilder} from './builders/'
 import {program} from 'commander'
 import selfPackage from '../package.json'
-import {ERROR_PREFIX} from './utils'
-import chalk from 'chalk'
 import {ProgramConfig} from './config'
 import {CommandLoader} from './commands'
 

@@ -1,3 +1,3 @@
 export type {Input} from './Input'
-export {SchematicType} from './enums'
+export {SchematicType, OperationType} from './enums'
 export type {Schematic} from './Schematic'

@@ -13,7 +13,7 @@ export default (str: string) => {
 		.toLowerCase()
 		.replace(STRING_DASHERIZE_REGEXP, '-')
 }
-export const toUpperFirst = (_: string | undefined): string | null => {
+export const toUpperFirst = (_: string | undefined): string => {
 	if (_) {
 		return _.toLowerCase()
 			.split(' ')
@@ -22,14 +22,14 @@ export const toUpperFirst = (_: string | undefined): string | null => {
 			.split('_')
 			.join(' ')
 	}
-	return null
+	return ''
 }
 declare global {
 	interface String {
 		toUpperFirst(): string
 	}
 }
-String.prototype.toUpperFirst = function () {
+String.prototype.toUpperFirst = function() {
 	return this.toLowerCase()
 		.split(' ')
 		.map((val: String) => val.charAt(0).toUpperCase() + val.slice(1))
