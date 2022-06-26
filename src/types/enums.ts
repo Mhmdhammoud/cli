@@ -1,0 +1,14 @@
+export enum SchematicType {
+	APPLICATION = 'APPLICATION',
+	RESOLVER = 'RESOLVER',
+	SERVICE = 'SERVICE',
+	SCHEMA = 'SCHEMA',
+	RESOURCE = 'RESOURCE',
+	CLASS='CLASS'
+}
+export enum OperationType{
+	GENERAL = 'GENERAL',
+	GENERATE = 'GENERATE',
+	UPDATE = 'UPDATE',
+	DELETE = 'DELETE'
+}

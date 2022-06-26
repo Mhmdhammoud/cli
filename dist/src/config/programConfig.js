@@ -8,8 +8,8 @@ const cli_table3_1 = __importDefault(require("cli-table3"));
 const schematics_1 = require("../schematics");
 class ProgramConfig {
     static buildDescription() {
-        return ('Generate a Nest element.\n' +
-            `  Schematics available on ${chalk_1.default.bold('@nestjs/schematics')} collection:\n` +
+        return ('Modifies a meritt element.\n' +
+            `  Schematics available on ${chalk_1.default.bold('@merittdev/schematics')} collection:\n` +
             this.buildSchematicsListAsTable());
     }
     static buildSchematicsListAsTable() {

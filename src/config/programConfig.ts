@@ -5,9 +5,9 @@ import {MerittCollection} from '../schematics'
 class ProgramConfig {
 	public static buildDescription(): string {
 		return (
-			'Generate a Nest element.\n' +
+			'Modifies a meritt element.\n' +
 			`  Schematics available on ${chalk.bold(
-				'@nestjs/schematics'
+				'@merittdev/schematics'
 			)} collection:\n` +
 			this.buildSchematicsListAsTable()
 		)
