@@ -6,3 +6,9 @@ export enum SchematicType {
 	RESOURCE = 'RESOURCE',
 	CLASS='CLASS'
 }
+export enum OperationType{
+	GENERAL = 'GENERAL',
+	GENERATE = 'GENERATE',
+	UPDATE = 'UPDATE',
+	DELETE = 'DELETE'
+}

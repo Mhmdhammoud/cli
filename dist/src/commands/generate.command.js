@@ -11,47 +11,46 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GenerateCommand = void 0;
 const types_1 = require("../types");
-const config_1 = require("../config");
 const utils_1 = require("../utils");
+const builders_1 = require("../builders");
 class GenerateCommand {
     load(program) {
-        program
-            .command('generate <schematic> [name]')
-            .alias('g')
-            .description(config_1.ProgramConfig.buildDescription())
-            .option('--no-spec', 'Disable spec files generation.', () => false)
-            .option('-n, --name [schematic name]', 'Schematic name to use.')
-            .action((schematic, args, command) => __awaiter(this, void 0, void 0, function* () {
-            switch ((0, utils_1.toUpperFirst)(schematic)) {
-                case (0, utils_1.toUpperFirst)(types_1.SchematicType.RESOURCE):
-                    console.log('resource');
-                    break;
-                case (0, utils_1.toUpperFirst)(types_1.SchematicType.RESOLVER):
-                    console.log('RESOLVER');
-                    break;
-                default:
-                    return;
-            }
-            console.log(command);
-            const options = [];
-            // options.push({
-            // 	name: 'spec',
-            // 	value:
-            // 		typeof command.spec === 'boolean'
-            // 			? command.spec
-            // 			: command.spec.value,
-            // 	options: {
-            // 		passedAsInput:
-            // 			typeof command.spec === 'boolean'
-            // 				? false
-            // 				: command.spec.passedAsInput,
-            // 	},
-            // })
-            const inputs = [];
-            // inputs.push({name: 'schematic', value: schematic})
-            // inputs.push({name: 'name', value: name})
-            // await this.action.handle(inputs, options)
-        }));
+        if (!process.argv.slice(3).length) {
+            program.outputHelp();
+        }
+        try {
+            program
+                .command('generate <schematic> [name] [alias]')
+                .alias('gen')
+                .option('-n, --name [schematic name]', 'Schematic name to use.')
+                .option('-p, --path [schematic path]', 'Schematic path to use.')
+                .action((schematic, args, command) => __awaiter(this, void 0, void 0, function* () {
+                const options = [];
+                options.push({
+                    name: 'path',
+                    value: (command === null || command === void 0 ? void 0 : command.path)
+                        ? command === null || command === void 0 ? void 0 : command.path
+                        : '',
+                });
+                options.push({
+                    name: 'name',
+                    value: (command === null || command === void 0 ? void 0 : command.name)
+                        ? command === null || command === void 0 ? void 0 : command.name
+                        : '',
+                });
+                switch ((0, utils_1.toUpperFirst)(schematic)) {
+                    case (0, utils_1.toUpperFirst)(types_1.SchematicType.RESOURCE):
+                        break;
+                    case (0, utils_1.toUpperFirst)(types_1.SchematicType.RESOLVER):
+                        (0, builders_1.resolverBuilder)(options);
+                        break;
+                    default:
+                        return;
+                }
+            }));
+        }
+        catch (err) {
+        }
     }
 }
 exports.GenerateCommand = GenerateCommand;

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const types_1 = require("../types");
+const utils_1 = require("../utils");
 class MerittCollection {
     // public async execute(name: string, options: SchematicOption[]) {
     // 	const schematic: string = this.validate(name)
@@ -20,27 +21,27 @@ class MerittCollection {
 }
 MerittCollection.schematics = [
     {
-        name: types_1.SchematicType.APPLICATION,
+        name: (0, utils_1.toUpperFirst)(types_1.SchematicType.APPLICATION),
         alias: 'application',
         description: 'Generate a new application workspace',
     },
     {
-        name: types_1.SchematicType.CLASS,
+        name: (0, utils_1.toUpperFirst)(types_1.SchematicType.CLASS),
         alias: 'cl',
         description: 'Generate a new class',
     },
     {
-        name: types_1.SchematicType.RESOLVER,
+        name: (0, utils_1.toUpperFirst)(types_1.SchematicType.RESOLVER),
         alias: 'r',
         description: 'Generate a GraphQL resolver declaration',
     },
     {
-        name: types_1.SchematicType.SERVICE,
+        name: (0, utils_1.toUpperFirst)(types_1.SchematicType.SERVICE),
         alias: 's',
         description: 'Generate a service declaration',
     },
     {
-        name: types_1.SchematicType.RESOURCE,
+        name: (0, utils_1.toUpperFirst)(types_1.SchematicType.RESOURCE),
         alias: 'res',
         description: 'Generate a new CRUD resource',
     },
