@@ -40,6 +40,7 @@ const resolver = (options: Input[]) => {
 		.then((innerAnswers) => {
 			console.log(innerAnswers)
 			console.log(options)
+
 			// const fileName =
 			// 	nameOption.value === ''
 			// 		? normalizeToKebabOrSnakeCase(`${

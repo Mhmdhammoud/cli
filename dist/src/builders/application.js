@@ -15,14 +15,14 @@ const resolver = (options) => {
             choices: ['yarn', 'npm'],
         },
     ];
-    nameOption?.value === '' &&
+    nameOption.value === '' &&
         basicOptions.push({
             type: 'input',
             name: 'applicationName',
             message: 'What do you want to name the application',
             choices: ['yarn', 'npm'],
         });
-    innerPath?.value === ''
+    innerPath.value === ''
         && basicOptions.push({
             type: 'input',
             name: 'path',

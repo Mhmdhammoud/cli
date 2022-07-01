@@ -1,6 +1,6 @@
 import {Command} from 'commander'
 import {Input, SchematicType} from '../types'
-import {toUpperFirst} from '../utils'
+import {generateInput, toUpperFirst} from '../utils'
 import {applicationBuilder} from '../builders'
 import inquirer, {Answers, Question} from 'inquirer'
 import {MESSAGES} from '../ui'
@@ -18,7 +18,7 @@ export class NewCommand {
 		const nameInput = NewCommand.getApplicationNameInput(inputs)
 		if (!nameInput!.value) {
 			const message = 'What name would you like to use for the new project?'
-			const questions = [NewCommand.generateInput('name', message)('nest-app')]
+			const questions = [generateInput('name', message)('nest-app')]
 			const answers: Answers = await prompt(questions as ReadonlyArray<Question>)
 			NewCommand.replaceInputMissingInformation(inputs, answers)
 		}

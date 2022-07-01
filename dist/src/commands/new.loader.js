@@ -30,7 +30,7 @@ class NewCommand {
             const nameInput = NewCommand.getApplicationNameInput(inputs);
             if (!nameInput.value) {
                 const message = 'What name would you like to use for the new project?';
-                const questions = [NewCommand.generateInput('name', message)('nest-app')];
+                const questions = [(0, utils_1.generateInput)('name', message)('nest-app')];
                 const answers = yield prompt(questions);
                 NewCommand.replaceInputMissingInformation(inputs, answers);
             }
