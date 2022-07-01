@@ -1,3 +1,0 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (function (titleName, serviceName, serviceFile, type) { return "\nimport {Resolver,".concat(type === 'Mutation' ? 'Mutation' : 'Query', "} from 'type-graphql'\nimport ").concat(serviceName, " from './").concat(serviceFile, "'\n@Resolver(()=>Boolean)\nclass ").concat(titleName, " {\n\tconstructor(private readonly ").concat(serviceFile, ":").concat(serviceName, ") {\n\t\tthis.").concat(serviceFile, " = new ").concat(serviceName, "()\n\t}\n@").concat(type === 'Mutation' ? 'Mutation' : 'Query', "(()=>String)\n\tasync ").concat(titleName.split('Resolver')[0], "(){\n\t\treturn true\n\t}\n}\nexport default ").concat(titleName); });

@@ -6,9 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const chalk_1 = __importDefault(require("chalk"));
 const ui_1 = require("../ui");
 const generate_command_1 = require("./generate.command");
+const new_loader_1 = require("./new.loader");
 class CommandLoader {
     static load(program) {
-        // new NewCommand(new NewAction()).load(program);
+        new new_loader_1.NewCommand().load(program);
         // new BuildCommand(new BuildAction()).load(program);
         // new StartCommand(new StartAction()).load(program);
         // new InfoCommand(new InfoAction()).load(program);

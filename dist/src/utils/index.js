@@ -23,4 +23,5 @@ Object.defineProperty(exports, "normalizeToKebabOrSnakeCase", { enumerable: true
 Object.defineProperty(exports, "toUpperFirst", { enumerable: true, get: function () { return formatting_1.toUpperFirst; } });
 var is_error_1 = require("./is-error");
 Object.defineProperty(exports, "isError", { enumerable: true, get: function () { return __importDefault(is_error_1).default; } });
+__exportStar(require("./questions"), exports);
 __exportStar(require("./prefixes"), exports);
