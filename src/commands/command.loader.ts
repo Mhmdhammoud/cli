@@ -2,10 +2,11 @@ import chalk from 'chalk'
 import {Command} from 'commander'
 import {ERROR_PREFIX} from '../ui'
 import {GenerateCommand} from './generate.command'
+import {NewCommand} from './new.loader'
 
 class CommandLoader {
 	public static load(program: Command): void {
-		// new NewCommand(new NewAction()).load(program);
+		new NewCommand().load(program)
 		// new BuildCommand(new BuildAction()).load(program);
 		// new StartCommand(new StartAction()).load(program);
 		// new InfoCommand(new InfoAction()).load(program);
