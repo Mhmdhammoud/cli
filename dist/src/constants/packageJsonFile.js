@@ -1,7 +1,7 @@
 "use strict";
-Object.defineProperty(exports, '__esModule', {value: true})
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = (applicationName, authorName, serviceClass, type, serviceFile) => {
-	return `
+    return `
 {
  "name": "${applicationName}",
  "version": "0.0.1",
@@ -69,5 +69,5 @@ exports.default = (applicationName, authorName, serviceClass, type, serviceFile)
   "ts-node-dev": "^1.1.8",
   "typescript": "^4.6.3"
  }
-}`
-}
+}`;
+};

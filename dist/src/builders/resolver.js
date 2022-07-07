@@ -9,8 +9,8 @@ const constants_1 = require("../constants/");
 const inquirer_1 = __importDefault(require("inquirer"));
 const utils_1 = require("../utils");
 const resolver = (options) => {
-    const nameOption = options.find(option => option.name === 'name');
-    const innerPath = options.find(option => option.name === 'path');
+    const nameOption = options.find((option) => option.name === 'name');
+    const innerPath = options.find((option) => option.name === 'path');
     const basicOptions = [
         {
             type: 'input',
@@ -30,8 +30,8 @@ const resolver = (options) => {
             name: 'fileName',
             message: 'What do you want to call it?',
         });
-    innerPath.value === ''
-        && basicOptions.push({
+    innerPath.value === '' &&
+        basicOptions.push({
             type: 'input',
             name: 'path',
             message: 'Where do you want to create it?',
@@ -44,17 +44,23 @@ const resolver = (options) => {
         const fileName = nameOption.value === ''
             ? (0, utils_1.normalizeToKebabOrSnakeCase)(`${innerAnswers.fileName.charAt(0).toLowerCase() +
                 innerAnswers.fileName.slice(1)}Resolver.ts`)
-            : (0, utils_1.normalizeToKebabOrSnakeCase)(`${nameOption.value.toString().charAt(0).toLowerCase() + nameOption.value.toString().slice(1)}Resolver.ts`);
+            : (0, utils_1.normalizeToKebabOrSnakeCase)(`${nameOption.value.toString().charAt(0).toLowerCase() +
+                nameOption.value.toString().slice(1)}Resolver.ts`);
         const titleName = nameOption.value === ''
             ? `${innerAnswers.fileName.charAt(0).toUpperCase() +
                 innerAnswers.fileName.slice(1)}`
-            : `${nameOption.value.toString().charAt(0).toUpperCase() + nameOption.value.toString().slice(1)}`;
+            : `${nameOption.value.toString().charAt(0).toUpperCase() +
+                nameOption.value.toString().slice(1)}`;
         const serviceClass = `${innerAnswers.serviceName.charAt(0).toUpperCase() +
             innerAnswers.serviceName.slice(1)}`.replace('-', '');
         const splitServiceName = innerAnswers.serviceName.split('-');
-        const serviceName = `${splitServiceName[0] +
-            splitServiceName[1].charAt(0).toUpperCase() + splitServiceName[1].slice(1)}`;
-        const pathToFile = innerPath.value === '' ? path_1.default.join(innerAnswers.path, fileName)
+        const serviceName = splitServiceName.length > 1
+            ? `${splitServiceName[0] +
+                splitServiceName[1].charAt(0).toUpperCase() +
+                splitServiceName[1].slice(1)}`
+            : innerAnswers.serviceName;
+        const pathToFile = innerPath.value === ''
+            ? path_1.default.join(innerAnswers.path, fileName)
             : path_1.default.join(process.cwd(), innerPath.value.toString(), fileName);
         (0, fs_1.writeFile)(pathToFile, (0, constants_1.resolverFile)(titleName, serviceName, serviceClass, innerAnswers.type, innerAnswers.serviceName), (err) => {
             if (err) {
