@@ -116,3 +116,10 @@ out
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Assets directories
+resolvers/
+services/
+schemas/
+responses/
+inputs/

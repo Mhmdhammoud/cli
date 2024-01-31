@@ -1,24 +1,19 @@
-export default (
-	titleName: string,
-	serviceName: string,
-	serviceClass: string,
-	type: string,
-	serviceFile:string
-) => {
-	const operationName=titleName.charAt(0).toLowerCase() + titleName.slice(1)
-	return `
-import {Resolver,${
-		type === 'Mutation' ? 'Mutation' : 'Query'
-	}} from 'type-graphql'
-import ${serviceClass} from './${serviceFile}'
-@Resolver(()=>Boolean)
+import {Formatter} from '@mhmdhammoud/meritt-utils'
+
+export default (resourceName) => {
+	const titleName = Formatter.toUpperTitle(`${resourceName}Resolver`)
+	const serviceName = `${resourceName.toLowerCase()}Service`
+	const serviceClass = Formatter.toUpperTitle(`${resourceName}Service`)
+	return `import { Resolver, Query } from 'type-graphql'
+import ${serviceClass} from '../services'
+@Resolver()
 class ${titleName} {
 	constructor(private readonly ${serviceName}:${serviceClass}) {
 		this.${serviceName} = new ${serviceClass}()
 	}
-@${type === 'Mutation' ? 'Mutation' : 'Query'}(()=>String)
-	async ${operationName}(){
-		return true
+@Query(()=> String)
+ 	hello(){
+		return this.${serviceName}.hello()
 	}
 }
 export default ${titleName}`

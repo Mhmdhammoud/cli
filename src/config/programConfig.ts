@@ -7,7 +7,7 @@ class ProgramConfig {
 		return (
 			'Modifies a meritt element.\n' +
 			`  Schematics available on ${chalk.bold(
-				'@merittdev/schematics'
+				'@meritt-dev/schematics'
 			)} collection:\n` +
 			this.buildSchematicsListAsTable()
 		)

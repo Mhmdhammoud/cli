@@ -4,30 +4,30 @@ import {toUpperFirst} from '../utils'
 class MerittCollection {
 	private static schematics: Schematic[] = [
 		{
-			name: toUpperFirst(SchematicType.APPLICATION),
-			alias: 'application',
-			description: 'Generate a new application workspace',
-		},
-		{
-			name: toUpperFirst(SchematicType.CLASS),
-			alias: 'cl',
-			description: 'Generate a new class',
-		},
-		{
-			name: toUpperFirst(SchematicType.RESOLVER),
-			alias: 'r',
-			description: 'Generate a GraphQL resolver declaration',
-		},
-		{
-			name: toUpperFirst(SchematicType.SERVICE),
-			alias: 's',
-			description: 'Generate a service declaration',
-		},
-		{
 			name: toUpperFirst(SchematicType.RESOURCE),
-			alias: 'res',
-			description: 'Generate a new CRUD resource',
+			alias: 'rs',
+			description: 'Generate a new resource workspace',
 		},
+		// {
+		// 	name: toUpperFirst(SchematicType.CLASS),
+		// 	alias: 'cl',
+		// 	description: 'Generate a new class',
+		// },
+		// {
+		// 	name: toUpperFirst(SchematicType.RESOLVER),
+		// 	alias: 'r',
+		// 	description: 'Generate a GraphQL resolver declaration',
+		// },
+		// {
+		// 	name: toUpperFirst(SchematicType.SERVICE),
+		// 	alias: 's',
+		// 	description: 'Generate a service declaration',
+		// },
+		// {
+		// 	name: toUpperFirst(SchematicType.RESOURCE),
+		// 	alias: 'res',
+		// 	description: 'Generate a new CRUD resource',
+		// },
 		// {
 		// 	name: 'library',
 		// 	alias: 'lib',
@@ -112,12 +112,12 @@ class MerittCollection {
 	//@ts-ignore
 	private validate(name: string) {
 		const schematic = MerittCollection.schematics.find(
-			(s) => s.name === name || s.alias === name,
+			(s) => s.name === name || s.alias === name
 		)
 
 		if (schematic === undefined || schematic === null) {
 			throw new Error(
-				`Invalid schematic "${name}". Please, ensure that "${name}" exists in this collection.`,
+				`Invalid schematic "${name}". Please, ensure that "${name}" exists in this collection.`
 			)
 		}
 		return schematic.name
